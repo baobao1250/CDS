@@ -1,3 +1,5 @@
+
+
 import { FC, ReactElement } from 'react';
 import { styled } from '@mui/material/styles';//useTheme
 import Box from '@mui/material/Box';
@@ -8,7 +10,7 @@ import meal1 from '../../assets/meal1.jpg'
 import meal2 from '../../assets/meal2.jpg'
 import meal3 from '../../assets/meal4.jpg'
 import meal4 from '../../assets/meal5.jpg'
-import LineChart from './LineChart';
+// import LineChart from './lineChart';
 import MealOrderStatistics from './MealOrderStatistics';
 import FavoriteMeals from './FavoriteMeals';
 import Suggestions from './Suggestions';
@@ -21,7 +23,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const Dashboard: FC = (): ReactElement => {
+const ThongKe: FC = (): ReactElement => {
   // const theme = useTheme();
   // sx={{[theme.breakpoints.down('sm')]: {display:'flex', flexDirection:'column', justifyContent:'center'}}}
   return (
@@ -39,25 +41,15 @@ const Dashboard: FC = (): ReactElement => {
         <Grid item xs={10} sm={6} md={6} lg={3}>
           <MediaCard title={'meal4'} description={'best dishes of restaurant'} imgUrl={meal4}/>
         </Grid>
-        <Grid item xs={10} sm={10} md={8} lg={8}>
+        <Grid item xs={10} sm={10} md={12} lg={12}>
           <Item sx={{height: 300,  }}>
-            <LineChart />
+            {/* <LineChart /> */}
           </Item>
         </Grid>
-        <Grid item xs={10} sm={8} md={4} lg={4}>
-          <Item sx={{height: 300,  }}>
-            <MealOrderStatistics/>
-          </Item>
-        </Grid>
-        <Grid item xs={10} sm={8} md={6} lg={6}>
-          <FavoriteMeals />
-        </Grid>
-        <Grid item xs={10} sm={8} md={6} lg={6}>
-          <Suggestions/>
-        </Grid>
+       
       </Grid>
     </Box>
   );
 }
 
-export default Dashboard;
+export default ThongKe;

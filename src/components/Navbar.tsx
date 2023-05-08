@@ -95,7 +95,7 @@ const Navbar: FC = (): ReactElement => {
                       <>
                         <Typography mx='auto' my={0} py={0} 
                         color={isDark ? theme.palette.success.dark : theme.palette.success.light} 
-                        >Ali Sajadian</Typography>
+                        >Admin</Typography>
                         <Avatar sx={{ width:35, height:35, m:0, p:0}}
                             src='https://avatars.githubusercontent.com/u/47317870?s=400&u=79da86747deb409779c3575c0da73d90ad65fe81&v=4'
                             alt='avatar'

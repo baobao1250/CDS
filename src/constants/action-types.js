@@ -1,0 +1,1 @@
+export const DECRYPT_KEY = "my-secret-key@123";

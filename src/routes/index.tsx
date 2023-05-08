@@ -5,7 +5,7 @@ import { IRoute } from "../types/RouteType";
 
 const Dashboard = async(() => import("../pages/dashboard/Dashboard"));
 const About = async(() => import("../pages/About"));
-const Config = async(() => import("../pages/Config"));
+const Config = async(() => import("../pages/config"));
 const Company = async(() => import("../pages/baseInfo/company"));
 const Department = async(() => import("../pages/baseInfo/department"));
 const Employee = async(() => import("../pages/baseInfo/employee"));
@@ -23,11 +23,10 @@ const ChangePassword = async(() => import("../pages/security/authentication/chan
 const ForgetPassword = async(() => import("../pages/security/authentication/forgetPassword"))
 const Page404 = async(() => import("../pages/security/authentication/Page404"))
 
-const Group = async(() => import("../pages/security/authorization/group"));
-const GroupPermission = async(() => import("../pages/security/authorization/groupPermission"));
-const Permission = async(() => import("../pages/security/authorization/permission"));
-const User = async(() => import("../pages/security/authorization/user"));
-const UserGroup = async(() => import("../pages/security/authorization/userGroup"));
+const ThongKe = async(() => import("../pages/security/thongKe/Dashboard"));
+const DanhSachCaNhan = async(() => import("../pages/security/danhSachCaNhan/index"));
+const DanhMucTinh = async(() => import("../pages/security/danhMucTinh/index"));
+
 
 
 export const routes: Array<IRoute> = [
@@ -138,35 +137,29 @@ export const routes: Array<IRoute> = [
         title: 'Group',
         path: 'security/group',
         enabled: true,
-        component: Group
+        component: ThongKe
     },
     {
-        key: 'grouppermission-route',
-        title: 'GroupPermission',
-        path: 'security/grouppermission',
+        key: 'thongke-route',
+        title: 'ThongKe',
+        path: 'security/ThongKe',
         enabled: true,
-        component: GroupPermission
+        component: ThongKe
+    },
+   
+    {
+        key: 'danhsachcanhan-route',
+        title: 'danhsachcanhan',
+        path: 'danhsach/danhsachcanhan',
+        enabled: true,
+        component: DanhSachCaNhan
     },
     {
-        key: 'permission-route',
-        title: 'Permission',
-        path: 'security/permission',
+        key: 'danhmuctinh-route',
+        title: 'danhmuctinh',
+        path: 'danhmuc/danhmuctinh',
         enabled: true,
-        component: Permission
-    },
-    {
-        key: 'user-route',
-        title: 'User',
-        path: 'security/user',
-        enabled: true,
-        component: User
-    },
-    {
-        key: 'usergroup-route',
-        title: 'UserGroup',
-        path: 'security/usergroup',
-        enabled: true,
-        component: UserGroup
+        component: DanhMucTinh
     },
 ]
 

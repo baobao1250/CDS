@@ -83,21 +83,21 @@ const SideBar: FC = (): ReactElement => {
             }} 
               variant="h5"
             >
-              Restaurant
+              QUYTUTHIEN
             </Typography>
           </MenuItem>
         </Menu>
             {/* <div style={{ flex: 1, marginBottom: '32px' }}> style={{ marginBottom: '24px', marginTop: '16px' }}*/}
-            <Box sx={{ p: '0 24px', mb: '8px', mt: '8px' }}>
+        {/* component="Link" href="/" */}
+        <Box sx={{ p: '0 24px', mb: '8px', mt: '8px' }}>
               <Typography
                 variant="body2"
                 fontWeight={600}
                 style={{ opacity: collapsed ? 0 : 0.7, letterSpacing: '0.5px' }}
               >
-                General
+                Web Site
               </Typography>
             </Box>
-        {/* component="Link" href="/" */}
         <Menu menuItemStyles={menuItemStyles}>
           <MenuItem 
             icon={<HomeOutlined />} 
@@ -106,39 +106,21 @@ const SideBar: FC = (): ReactElement => {
           >
             Home
           </MenuItem>
-          <SubMenu icon={<InfoOutlined />} label="BaseInfo">
+          <SubMenu icon={<InfoOutlined />} label="Thông tin chung">
             <MenuItem onClick={() => navigate('baseinfo/company', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Company')}>Company</MenuItem>
+              onMouseUp={() => menuItemMouseUpHandler('Profile')}>Profile</MenuItem>
             <MenuItem onClick={() => navigate('baseinfo/department', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Department')}>Department</MenuItem>
+              onMouseUp={() => menuItemMouseUpHandler('Logout')}>Logout</MenuItem>
             <MenuItem onClick={() => navigate('baseinfo/employee', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Employee')}>Employee</MenuItem>
-            <MenuItem onClick={() => navigate('baseinfo/jobPosition', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('JobPosition')}>JobPosition</MenuItem>
-            <MenuItem onClick={() => navigate('baseinfo/Project', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Project')}>Project</MenuItem>
+              onMouseUp={() => menuItemMouseUpHandler('Login')}>Login</MenuItem>
           </SubMenu>
-          <SubMenu icon={<RestaurantMenuOutlined />} label="Restaurant">
+          <SubMenu icon={<RestaurantMenuOutlined />} label="Danh sách quỷ">
             <MenuItem onClick={() => navigate('restaurant/meal', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Meal')}>Meal</MenuItem>
+              onMouseUp={() => menuItemMouseUpHandler('Danh sách quỷ tỉnh')}>Danh sách quỷ tỉnh</MenuItem>
             <MenuItem onClick={() => navigate('restaurant/mealssettingmonthly', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Meals Setting Monthly')}>Meals Setting Monthly</MenuItem>
+              onMouseUp={() => menuItemMouseUpHandler('Danh sách quỷ huyện')}>Danh sách quỷ huyện</MenuItem>
             <MenuItem onClick={() => navigate('restaurant/mealsselectioncurrentmonth', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Select Current Month Meals')}>Select Current Month Meals</MenuItem>
-            <MenuItem onClick={() => navigate('restaurant/mealsselectionnextmonth', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Select Next Month Meals')}>Select Next Month Meals</MenuItem>
-          </SubMenu>
-          <SubMenu icon={<SecurityOutlined />} label="Security">
-            <MenuItem onClick={() => navigate('security/user', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Users')}>Users</MenuItem>
-            <MenuItem onClick={() => navigate('security/group', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Groups')}>Groups</MenuItem>
-            <MenuItem onClick={() => navigate('security/permission', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Permissions')}>Permissions</MenuItem>
-            <MenuItem onClick={() => navigate('security/grouppermission', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('Group Permissions')}>Group Permissions</MenuItem>
-            <MenuItem onClick={() => navigate('security/usergroup', { replace: true })}
-              onMouseUp={() => menuItemMouseUpHandler('User and Group')}>User and Group</MenuItem>
+              onMouseUp={() => menuItemMouseUpHandler('Danh sách quỷ phường')}>Danh sách quỷ phường</MenuItem>
           </SubMenu>
    
           <Box sx={{ py: '0', px:'24px', mb: '8px', mt: '32px' }}>
@@ -147,32 +129,53 @@ const SideBar: FC = (): ReactElement => {
                 fontWeight={600}
                 style={{ opacity: collapsed ? 0 : 0.7, letterSpacing: '0.5px' }}
               >
-                Extra
+                Admin
               </Typography>
             </Box>
 
+            
+
             <Menu menuItemStyles={menuItemStyles}>
-              <MenuItem icon={<FoodBankOutlined />} suffix={<Badge variant="success">New</Badge>}>
+              {/* <MenuItem icon={<FoodBankOutlined />} suffix={<Badge variant="success">New</Badge>}>
                 New Courses
-              </MenuItem>
-              <SubMenu icon={<SearchOutlined />} label="User Survey">
-                <MenuItem>January</MenuItem>
-                <MenuItem>February</MenuItem>
-                <MenuItem>March</MenuItem>
+              </MenuItem> */}
+
+                 <MenuItem 
+                    icon={<HomeOutlined />} 
+                    onClick={() => (navigate('security/ThongKe', { replace: true }))} 
+                    onMouseUp={() => menuItemMouseUpHandler('ThongKe')}
+                  >
+                    Thông kê
+                  </MenuItem>
+
+          <SubMenu icon={<SecurityOutlined />} label="Danh mục">
+            <MenuItem onClick={() => navigate('danhmuc/danhmuctinh', { replace: true })}
+              onMouseUp={() => menuItemMouseUpHandler('Danh mục tỉnh')}>Danh mục tỉnh</MenuItem>
+            <MenuItem onClick={() => navigate('security/group', { replace: true })}
+              onMouseUp={() => menuItemMouseUpHandler('Danh mục huyện')}>Danh mục huyện</MenuItem>
+            <MenuItem onClick={() => navigate('security/permission', { replace: true })}
+              onMouseUp={() => menuItemMouseUpHandler('Danh mục phường')}>Danh mục phường</MenuItem>
+          </SubMenu>
+
+              <SubMenu icon={<SearchOutlined />} label="Danh sách nộp quỷ">
+              <MenuItem onClick={() => navigate('danhsach/danhsachcanhan', { replace: true })}
+              onMouseUp={() => menuItemMouseUpHandler('Cá nhân')}>Cá nhân</MenuItem>
+            <MenuItem onClick={() => navigate('security/grouppermission', { replace: true })}
+              onMouseUp={() => menuItemMouseUpHandler('Hộ gia đình')}>Hộ gia đình</MenuItem>
               </SubMenu>
-              <MenuItem disabled icon={<RecommendOutlined />}>
+              {/* <MenuItem disabled icon={<RecommendOutlined />}>
                 Examples
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
-            <MenuItem 
+            {/* <MenuItem 
               icon={<Settings/>}
               onClick={() => navigate('/config', { replace: true })}
               onMouseUp={() => menuItemMouseUpHandler('Template Configuration')}
             >
               Template Config
-            </MenuItem>
+            </MenuItem> */}
         </Menu>
-        <SidebarFooter collapsed={collapsed}/>
+        {/* <SidebarFooter collapsed={collapsed}/> */}
       </Sidebar>
   )
 }

@@ -12,7 +12,7 @@ const User: FC<any> = (): ReactElement => {
         alignItems: "center",
       }}
     >
-      <Typography variant="h3">User</Typography>
+      <Typography variant="h3">Usesr</Typography>
     </Box>
   );
 };
