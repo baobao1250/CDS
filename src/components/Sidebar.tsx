@@ -132,12 +132,6 @@ const SideBar: FC = (): ReactElement => {
                     >
                         Đăng ký nghĩa vụ quân sự
                     </MenuItem>
-                    <MenuItem
-                        onClick={() => navigate("danhmuc/TinhTrangXuLy", { replace: true })}
-                        onMouseUp={() => menuItemMouseUpHandler("Danh sách đăng ký nghĩa vụ quân sự")}
-                    >
-                        Danh sách đăng ký nghĩa vụ quân sự
-                    </MenuItem>
                 </SubMenu>
 
                 <Box sx={{ py: "0", px: "24px", mb: "8px", mt: "32px" }}>

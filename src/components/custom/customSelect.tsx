@@ -20,7 +20,7 @@ export interface CustomSelectProps {
     required?: boolean;
     errors: any;
     isDrawer?: boolean;
-    title: string;
+    title?: string;
     disabled?: boolean;
     isBold?: boolean;
     backgroundColor?: string;

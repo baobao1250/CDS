@@ -27,7 +27,6 @@ const DanhSachCaNhan = async(() => import("../pages/security/danhSachCaNhan/inde
 const DanhMucTinh = async(() => import("../pages/security/danhMucTinh/index"));
 
 const DangKyNVQSProvider = async(() => import("../pages/quanLyDangKyNVQS/DangKyNVQS/dangKyNVQSContext"));
-const DanhSachNVQSProvider = async(() => import("../pages/quanLyDangKyNVQS/DanhSachNVQS/danhSachNVQSContext"));
 
 export const routes: Array<IRoute> = [
     {
@@ -167,13 +166,6 @@ export const routes: Array<IRoute> = [
         path: "danhmuc/QuanLyDangKyNVQS",
         enabled: true,
         component: DangKyNVQSProvider,
-    },
-    {
-        key: "TinhTrangXuLy",
-        title: "TinhTrangXuLy",
-        path: "danhmuc/TinhTrangXuLy",
-        enabled: true,
-        component: DanhSachNVQSProvider,
     },
 ];
 
