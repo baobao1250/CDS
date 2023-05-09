@@ -1,15 +1,11 @@
 import React, { ReactElement, useEffect, useMemo, useState } from "react";
 import { Box, Button, Collapse, Grid, IconButton, InputBase, InputLabel, NativeSelect, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
-// import AddIcon from "@material-ui/icons/Add";
-import { ColumnCustomTable, CustomTable } from "../../../components/commons/customTable/customTable";
 import { DanhMucQuyDTO, dataDMQuy } from "../../../models/interace";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { EditIconMUI, RemoveIconMUI } from "../../../components/commons/icons/icons";
+
 // import { CellProps, Column, useRowSelect, useTable  } from "react-table";
-import { Cell, CheckIconDeActive } from "../../../components/commons/table/tableCommons";
-import CustomReactTable from "../../../components/commons/customReactTable/customReactTable";
-import useContextTableFooter from "../../../hooks/useContextTableFooter";
+import { Cell } from "../../../components/commons/table/tableCommons";
 import { TableCell } from "@material-ui/core";
 import { DMQuyDialog } from "./dialog";
 

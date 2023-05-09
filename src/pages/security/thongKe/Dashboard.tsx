@@ -5,9 +5,6 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ListCardThongKe from '../thongKe/components/cards/listCard';
 import { Typography } from '@mui/material';
-import BarChart from '../thongKe/components/chart/barChart';
-import PieChartNormal from '../thongKe/components/chart/pieChartNorrmal';
-import PieChart from '../thongKe/components/chart/pieChart';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode !== 'dark' ? 'whitesmoke' : '#fff',

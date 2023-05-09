@@ -19,6 +19,7 @@ import { DialogTitle } from "../../../components/commons/dialog/dialogCommons";
 import { DanhMucQuyDTO, dataDMQuy } from "../../../models/interace";
 import { log } from "console";
 import { DanhSachCaNhanDTO } from "../../../models/danhsachcanhan";
+// import { DialogTitle } from "@material-ui/core";
 
 interface IModalProps {
     onDialogClose: () => void;

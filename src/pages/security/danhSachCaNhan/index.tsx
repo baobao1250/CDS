@@ -1,18 +1,13 @@
-import React, { ReactElement, useEffect, useMemo, useState } from "react";
-import { Box, Button, Collapse, Grid, IconButton, InputBase, InputLabel, NativeSelect, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, IconButton, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField } from "@mui/material";
+import React, { ReactElement, useEffect, useState } from "react";
 // import AddIcon from "@material-ui/icons/Add";
-import { ColumnCustomTable, CustomTable } from "../../../components/commons/customTable/customTable";
-import { DanhMucQuyDTO, dataDMQuy } from "../../../models/interace";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { EditIconMUI, RemoveIconMUI } from "../../../components/commons/icons/icons";
 // import { CellProps, Column, useRowSelect, useTable  } from "react-table";
-import { Cell, CheckIconDeActive } from "../../../components/commons/table/tableCommons";
-import CustomReactTable from "../../../components/commons/customReactTable/customReactTable";
-import useContextTableFooter from "../../../hooks/useContextTableFooter";
 import { TableCell } from "@material-ui/core";
+// import { Cell } from "../../../components/commons/table/tableCommons";
+import { DanhSachCaNhanDTO, dataDSCN } from "../../../models/danhsachcanhan";
 import { DMQuyDialog } from "./dialog";
-import { DanhSachCaNhanDTO,dataDSCN } from "../../../models/danhsachcanhan";
 
 interface Props{
 
@@ -90,44 +85,44 @@ const handleDelete = (id: number) => {
                             <TableCell  component="th" className="bold-cell" scope="row" align="center" width="5%">
                                 Mã
                             </TableCell >
-                            <Cell component="th" scope="row" align="center" width="15%">
+                            <TableCell component="th" scope="row" align="center" width="15%">
                                 Họ và tên
-                            </Cell>
+                            </TableCell>
                           
-                            <Cell component="th" scope="row" align="center" width="10%">
+                            <TableCell component="th" scope="row" align="center" width="10%">
                                 Số điện thoại
-                            </Cell>
-                            <Cell component="th" scope="row" align="center" width="15%">
+                            </TableCell>
+                            <TableCell component="th" scope="row" align="center" width="15%">
                                 Gmail
-                            </Cell>
-                            <Cell component="th" scope="row" align="center" width="20%">
+                            </TableCell>
+                            <TableCell component="th" scope="row" align="center" width="20%">
                                 Số tiền nộp
-                            </Cell>
-                            <Cell component="th" scope="row" align="center" width="20%">
+                            </TableCell>
+                            <TableCell component="th" scope="row" align="center" width="20%">
                             Ngay nộp
-                            </Cell>
-                            <Cell component="th" scope="row" align="center" width="20%">
+                            </TableCell>
+                            <TableCell component="th" scope="row" align="center" width="20%">
                               Nội dung
-                            </Cell>
+                            </TableCell>
                             
-                            <Cell component="th" scope="row" align="center" width="10%">
+                            <TableCell component="th" scope="row" align="center" width="10%">
                                 Thao tác
-                            </Cell>
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {data.map((row, i) => (
                             <TableRow key={row.id} >
-                                <Cell scope="row" align="center">
+                                <TableCell scope="row" align="center">
                                     {row.code}
-                                </Cell>
-                                <Cell align="center">{row.name}</Cell>
-                                <Cell align="center">{row.sdt}</Cell>
-                                <Cell align="center">{row.gmail}</Cell>
-                                <Cell align="center">{row.sotien}</Cell>
-                                <Cell align="center">{row.ngaynop}</Cell>
-                                <Cell align="center">{row.noidung}</Cell>
-                                <Cell align="center">
+                                </TableCell>
+                                <TableCell align="center">{row.name}</TableCell>
+                                <TableCell align="center">{row.sdt}</TableCell>
+                                <TableCell align="center">{row.gmail}</TableCell>
+                                <TableCell align="center">{row.sotien}</TableCell>
+                                <TableCell align="center">{row.ngaynop}</TableCell>
+                                <TableCell align="center">{row.noidung}</TableCell>
+                                <TableCell align="center">
                                     <Box display="flex" justifyContent="center">
                                         <IconButton
                                             color="primary"
@@ -151,7 +146,7 @@ const handleDelete = (id: number) => {
                                             <DeleteIcon />
                                         </IconButton>
                                     </Box>
-                                </Cell>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

@@ -22,7 +22,7 @@ const ServerFilePreview: React.FC<PreFilePreviewProps> = ({
   return (
     <>
       {files.map((item, i) => {
-        if (item.isDeleted) return null;
+        // if (item.isDeleted) return null;
         return (
           <Box
             key={i}
@@ -88,7 +88,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
     <>
       {files.map((item, key) => {
         return (
-          !item.isDeleted && (
+          true && (
             <Box
               display="flex"
               key={key}
