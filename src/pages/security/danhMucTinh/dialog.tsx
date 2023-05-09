@@ -62,7 +62,7 @@ export const DMQuyDialog = (props: IModalProps) => {
         <>
             <Dialog  onClose={props.onDialogClose} fullWidth maxWidth="md" aria-labelledby="customized-dialog-title"open={openDialog} >
                 <DialogTitle id="customized-dialog-title" onClose={props.onDialogClose}>
-                    {itemEditDTO.id !== null ? "Thêm mới vai trò" : "Cập nhật vai trò"}
+                    {itemEditDTO.id !== null ? "Thêm mới danh mục" : "Cập nhật danh mục"}
                 </DialogTitle>
                 <DialogContent dividers>
                 <Box padding={0}>

@@ -57,6 +57,7 @@ const SideBar: FC = (): ReactElement => {
                 >
                     {" "}
                     <Typography
+                        
                         sx={{
                             textAlign: "center",
                             fontWeight: "bold",
@@ -65,7 +66,7 @@ const SideBar: FC = (): ReactElement => {
                         }}
                         variant="h5"
                     >
-                        QUYTUTHIEN
+                        CONGDANSO
                     </Typography>
                 </MenuItem>
             </Menu>
@@ -73,17 +74,10 @@ const SideBar: FC = (): ReactElement => {
             {/* component="Link" href="/" */}
             <Box sx={{ p: "0 24px", mb: "8px", mt: "8px" }}>
                 <Typography variant="body2" fontWeight={600} style={{ opacity: collapsed ? 0 : 0.7, letterSpacing: "0.5px" }}>
-                    Web Site
+                    App Nghĩa vụ quân sự
                 </Typography>
             </Box>
             <Menu menuItemStyles={menuItemStyles}>
-                <MenuItem
-                    icon={<HomeOutlined />}
-                    onClick={() => navigate("/", { replace: true })}
-                    onMouseUp={() => menuItemMouseUpHandler("Home")}
-                >
-                    Home
-                </MenuItem>
                 <SubMenu icon={<InfoOutlined />} label="Thông tin chung">
                     <MenuItem
                         onClick={() => navigate("baseinfo/company", { replace: true })}
@@ -104,27 +98,6 @@ const SideBar: FC = (): ReactElement => {
                         Login
                     </MenuItem>
                 </SubMenu>
-                <SubMenu icon={<RestaurantMenuOutlined />} label="Danh sách quỷ">
-                    <MenuItem
-                        onClick={() => navigate("restaurant/meal", { replace: true })}
-                        onMouseUp={() => menuItemMouseUpHandler("Danh sách quỷ tỉnh")}
-                    >
-                        Danh sách quỷ tỉnh
-                    </MenuItem>
-                    <MenuItem
-                        onClick={() => navigate("restaurant/mealssettingmonthly", { replace: true })}
-                        onMouseUp={() => menuItemMouseUpHandler("Danh sách quỷ huyện")}
-                    >
-                        Danh sách quỷ huyện
-                    </MenuItem>
-                    <MenuItem
-                        onClick={() => navigate("restaurant/mealsselectioncurrentmonth", { replace: true })}
-                        onMouseUp={() => menuItemMouseUpHandler("Danh sách quỷ phường")}
-                    >
-                        Danh sách quỷ phường
-                    </MenuItem>
-                </SubMenu>
-
                 <SubMenu icon={<InfoOutlined />} label="Nghĩa vụ quân sự">
                     <MenuItem
                         onClick={() => navigate("danhmuc/QuanLyDangKyNVQS", { replace: true })}
@@ -136,14 +109,38 @@ const SideBar: FC = (): ReactElement => {
 
                 <Box sx={{ py: "0", px: "24px", mb: "8px", mt: "32px" }}>
                     <Typography variant="body2" fontWeight={600} style={{ opacity: collapsed ? 0 : 0.7, letterSpacing: "0.5px" }}>
-                        Admin
+                        App Quỷ
                     </Typography>
                 </Box>
+
+                
 
                 <Menu menuItemStyles={menuItemStyles}>
                     {/* <MenuItem icon={<FoodBankOutlined />} suffix={<Badge variant="success">New</Badge>}>
                 New Courses
               </MenuItem> */}
+
+
+                <SubMenu icon={<SecurityOutlined />} label="WebApp">
+                        <MenuItem
+                            icon={<HomeOutlined />}
+                            onClick={() => navigate("/", { replace: true })}
+                            onMouseUp={() => menuItemMouseUpHandler("Đăng ký")}
+                        >
+                            Đăng ký đóng quỷ
+                        </MenuItem>
+                        <SubMenu icon={<SecurityOutlined />} label="Cán bộ">
+                        <MenuItem
+                            icon={<HomeOutlined />}
+                            onClick={() => navigate("dashboard/danhsach", { replace: true })}
+                            onMouseUp={() => menuItemMouseUpHandler("Danh sách đăng ký đóng quỷ")}
+                        >
+                          Danh sách đăng ký đóng quỷ
+                        </MenuItem>
+                        </SubMenu>
+                    </SubMenu>
+
+                    <SubMenu icon={<SearchOutlined />} label="Admin">
 
                     <MenuItem
                         icon={<HomeOutlined />}
@@ -159,12 +156,6 @@ const SideBar: FC = (): ReactElement => {
                             onMouseUp={() => menuItemMouseUpHandler("Danh mục tỉnh")}
                         >
                             Danh mục tỉnh
-                        </MenuItem>
-                        <MenuItem
-                            onClick={() => navigate("security/group", { replace: true })}
-                            onMouseUp={() => menuItemMouseUpHandler("Danh mục huyện")}
-                        >
-                            Danh mục huyện
                         </MenuItem>
                         <MenuItem
                             onClick={() => navigate("security/permission", { replace: true })}
@@ -188,6 +179,9 @@ const SideBar: FC = (): ReactElement => {
                             Hộ gia đình
                         </MenuItem>
                     </SubMenu>
+                    </SubMenu>
+
+                    
                     {/* <MenuItem disabled icon={<RecommendOutlined />}>
                 Examples
               </MenuItem> */}

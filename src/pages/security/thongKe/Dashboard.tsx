@@ -5,6 +5,8 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ListCardThongKe from '../thongKe/components/cards/listCard';
 import { Typography } from '@mui/material';
+import Logo from '../../../assets/logo.jpg';
+import Chart from '../../../assets/chart1.png';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode !== 'dark' ? 'whitesmoke' : '#fff',
@@ -20,7 +22,34 @@ const Dashboard: FC = (): ReactElement => {
   return (
     <>
     <Box sx={{ flexGrow: 1, p: 2}} >
+    <Paper
+            elevation={5}
+            sx={{
+                height: "300px",
+                margin: "10px",
+                marginLeft: "20px",
+                marginTop: "40px",
+                marginRight: "20px",
+            }}
+        >
+            <Grid xs={12} display={"flex"} justifyContent={"space-between"} sx={{ padding: "10px" }}>
+                <Typography
+                    sx={{
+                        fontWeight: 600,
+                    }}
+                >
+                     TỔNG QUAN
+                </Typography>
+            </Grid>
+            <Grid container item xs={12} sx={{ height: "88%" }}>
+                            <Grid item xs={12} sx={{  marginLeft: "20px"  }} justifyContent={'center'} display={'flex'} marginTop={"85px"} >
+                            <Typography color={"red"} variant="body1" fontSize={20} fontWeight="bold">THỐNG KÊ SỐ LIỆU ĐẠT ĐƯỢC</Typography>
+                            </Grid>
+                        </Grid>
+
+        </Paper>
         <Grid container spacing={2} sx={{ height: "310px", paddingTop: "0px !important" }}>
+            
             <Grid item xs={10} sm={10} md={6} lg={6}>
                 <Grid item xs={12}>
                     <Paper elevation={5} sx={{ height: "310px", margin: "10px", marginLeft: "20px" }}>
@@ -47,14 +76,16 @@ const Dashboard: FC = (): ReactElement => {
                                 paddingTop={"5px"}
                             >
                                 <Box sx={{ width: "40%", marginRight: "20px" }} onClick={() => {}}>
+                                
                                 </Box>
                             </Grid>
                         </Grid>
 
                         <Grid container item xs={12} sx={{ height: "88%" }}>
                             <Grid item xs={12} sx={{  marginLeft: "20px"  }} >
-                                {/* <BarChart tinhOrHuyen = {true}/> */}
-                                {/* <PieChart total={14} /> */}
+                            <img src={Chart} alt="Chart" width={"400px"} height={"250px"} />
+                        
+                               
                             </Grid>
                         </Grid>
                     </Paper>
@@ -72,7 +103,7 @@ const Dashboard: FC = (): ReactElement => {
                                         marginLeft: "20px",
                                     }}
                                 >
-                                    CÁC QUỶ ĐÃ HOÀN THÀNH
+                                    TÌNH TRẠNG THỰC HIỆN QUỶ
                                 </Typography>
                             </Grid>
                             <Grid
@@ -90,7 +121,7 @@ const Dashboard: FC = (): ReactElement => {
 
                         <Grid container item xs={12} sx={{ height: "88%" }}>
                             <Grid item xs={12} sx={{  marginLeft: "20px"  }}>
-                            {/* <BarChart tinhOrHuyen = {false}/> */}
+                            <img src={Chart} alt="Chart" width={"400px"} height={"250px"} />
                                 
                             </Grid>
                         </Grid>
@@ -99,28 +130,7 @@ const Dashboard: FC = (): ReactElement => {
             </Grid>
         </Grid>
 
-        <Paper
-            elevation={5}
-            sx={{
-                height: "300px",
-                margin: "10px",
-                marginLeft: "20px",
-                marginTop: "40px",
-                marginRight: "20px",
-            }}
-        >
-            <Grid xs={12} display={"flex"} justifyContent={"space-between"} sx={{ padding: "10px" }}>
-                <Typography
-                    sx={{
-                        fontWeight: 600,
-                    }}
-                >
-                     TÌNH TRẠNG THỰC HIỆN QUỶ
-                </Typography>
-                
-            </Grid>
-           
-        </Paper>
+      
     </Box>
 </>
   );

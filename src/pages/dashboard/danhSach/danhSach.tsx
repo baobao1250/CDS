@@ -1,36 +1,39 @@
 import React, { ReactElement, useEffect, useMemo, useState } from "react";
 import { Box, Button, Collapse, Grid, IconButton, InputBase, InputLabel, NativeSelect, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
+// import AddIcon from "@material-ui/icons/Add";
 import { DanhMucQuyDTO, dataDMQuy } from "../../../models/interace";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
+// import { EditIconMUI, RemoveIconMUI } from "../../../components/commons/icons/icons";
 // import { CellProps, Column, useRowSelect, useTable  } from "react-table";
-import { Cell } from "../../../components/commons/table/tableCommons";
 import { TableCell } from "@material-ui/core";
-import { DMQuyDialog } from "./dialog";
+import { log } from "console";
+import { Cell } from "../../../components/commons/table/tableCommons";
+import { DanhSachCongDanDTO,dataDSCD } from "../../../models/dsCongDan";
+
 
 interface Props{
 
 }
 
-const DMQUY: React.FC<Props>  = ():ReactElement => {
+const DanhSach: React.FC<Props>  = ():ReactElement => {
     const [openDialog, setOpenDialog] = useState<boolean>(false);
-    const [dataQuy, setDataQuy] = useState<DanhMucQuyDTO[]>([]);
-    const [itemSelected, setItemSelected] = useState<DanhMucQuyDTO>({} as DanhMucQuyDTO);
+    const [dataQuy, setDataQuy] = useState<DanhSachCongDanDTO[]>([]);
+    const [itemSelected, setItemSelected] = useState<DanhSachCongDanDTO>({} as DanhSachCongDanDTO);
 
     const closeDialog = async () => {
         await setOpenDialog(false);
-        setItemSelected({} as DanhMucQuyDTO);
+        setItemSelected({} as DanhSachCongDanDTO);
     };
 
     useEffect(() => {
-        setDataQuy(dataDMQuy);
+        setDataQuy(dataDSCD);
     }, []);
-
+    
     const handleSubmitData =  (data:any) => {
           setDataQuy([...dataQuy,data]);
           setOpenDialog(false);
-          setItemSelected({} as DanhMucQuyDTO);
+          setItemSelected({} as DanhSachCongDanDTO);
          
     };
 
@@ -44,43 +47,13 @@ const handleDelete = (id: number) => {
 
   return (
     <>
-          <Grid container item xs={12} marginTop={2}  >   
-          <Grid item xs={8} >
-                        <TextField
-                            fullWidth
-                            placeholder="Nhập nội dung tìm kiếm"
-                            inputProps={{ "aria-label": "description" }}
-                        />
-          </Grid>
-          <Grid item xs={4} className="grid-item" justifyContent="flex-end" marginTop={2} >
-                        <Box justifyContent="center" display="flex">
-                            <Button
-                                variant="contained"
-                                style={{ backgroundColor: "#5fba63", color: "#fff",  width: 200 }}
-                                onClick={() => {
-                                    setOpenDialog(true);
-                                }}
-                            >
-                                {/* <AddIcon style={{ color: "#FFF", marginRight: 5, fontSize: 17 }} /> */}
-                                <Box
-                                    component="span"
-                                    fontSize="14px"
-                                    fontFamily="Roboto"
-                                    fontWeight="500"
-                                    whiteSpace="nowrap"
-                                    textOverflow="ellipsis"
-                                    overflow="hidden"
-                                >
-                                    Thêm mới
-                                </Box>
-                            </Button>
-                        </Box>
-          </Grid>
-        <Grid  item xs={12} marginTop={2}>
-        <Grid item xs={12} display={"flex"} justifyContent={"center"} marginBottom={2}>
-            <Typography variant="body1" fontSize={20} fontWeight="bold">DANH SÁCH QUỶ CỦA TỈNH</Typography>
+        
+          <Grid container item xs={12} marginTop={10} >  
+          <Grid item xs={12} display={"flex"} justifyContent={"center"} marginBottom={2}>
+            <Typography variant="body1" fontSize={20} fontWeight="bold">DANH SÁCH ĐĂNG KÍ ĐÓNG QUỶ</Typography>
             </Grid> 
-          <TableContainer  component={Paper}  >
+          
+          <TableContainer  component={Paper} >
                 <Table aria-label="customized table" size="medium">
                     <TableHead >
                         <TableRow>
@@ -88,17 +61,20 @@ const handleDelete = (id: number) => {
                                 Mã
                             </TableCell >
                             <Cell component="th" scope="row" align="center" width="15%">
-                                Tên quỷ của tỉnh
+                                Họ và tên
                             </Cell>
                           
                             <Cell component="th" scope="row" align="center" width="10%">
-                                Mô tả
+                                gmail
+                            </Cell>
+                            <Cell component="th" scope="row" align="center" width="10%">
+                                quỷ tham gia
                             </Cell>
                             <Cell component="th" scope="row" align="center" width="15%">
                                 ngày tạo
                             </Cell>
                             <Cell component="th" scope="row" align="center" width="20%">
-                                hoạt động
+                                địa chỉ
                             </Cell>
                             
                             <Cell component="th" scope="row" align="center" width="10%">
@@ -111,11 +87,14 @@ const handleDelete = (id: number) => {
                             <TableRow key={row.id} >
                                 <Cell scope="row" align="center">
                                     {row.code}
+                                    
                                 </Cell>
                                 <Cell align="center">{row.name}</Cell>
-                                <Cell align="center">{row.mota}</Cell>
+                                <Cell align="center">{row.cccd}</Cell>
+                                <Cell align="center">{row.quy}</Cell>
                                 <Cell align="center">{row.ngaytao}</Cell>
-                                <Cell align="center">{row.active}</Cell>
+                                <Cell align="center">{row.diachi}</Cell>
+                               
                                
                                 <Cell align="center">
                                     <Box display="flex" justifyContent="center">
@@ -147,17 +126,6 @@ const handleDelete = (id: number) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            </Grid>
-            <Paper component="div">
-                {openDialog && (
-                    <DMQuyDialog 
-                        openDialog={openDialog}
-                        onDialogClose={closeDialog}   
-                        itemEdit={itemSelected}  
-                        onSubmitData={handleSubmitData}
-                    />
-                )}
-            </Paper>
          
         </Grid>
 
@@ -167,4 +135,4 @@ const handleDelete = (id: number) => {
   );
 };
 
-export default DMQUY;
+export default DanhSach;

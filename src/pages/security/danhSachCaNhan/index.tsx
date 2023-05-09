@@ -1,4 +1,4 @@
-import { Box, Button, Grid, IconButton, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField } from "@mui/material";
+import { Box, Button, Grid, IconButton, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
 import React, { ReactElement, useEffect, useState } from "react";
 // import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -44,8 +44,8 @@ const handleDelete = (id: number) => {
 
   return (
     <>
-          <Grid container item xs={12} margin={2} >  
-          <Grid item xs={8}>
+           <Grid container item xs={12} marginTop={2}  >   
+          <Grid item xs={8} >
                         <TextField
                             fullWidth
                             placeholder="Nhập nội dung tìm kiếm"
@@ -53,8 +53,8 @@ const handleDelete = (id: number) => {
                             
                         />
           </Grid>
-          <Grid item xs={4} className="grid-item" justifyContent="flex-end">
-                        <Box justifyContent="flex-end" display="flex">
+          <Grid item xs={4} className="grid-item" justifyContent="flex-end" marginTop={2}>
+                        <Box justifyContent="center" display="flex">
                             <Button
                                 variant="contained"
                                 style={{ backgroundColor: "#5fba63", color: "#fff",  width: 200 }}
@@ -77,7 +77,10 @@ const handleDelete = (id: number) => {
                             </Button>
                         </Box>
           </Grid>
-        
+          <Grid  item xs={12} marginTop={2}>
+          <Grid item xs={12} display={"flex"} justifyContent={"center"} marginBottom={2}>
+            <Typography variant="body1" fontSize={20} fontWeight="bold">DANH SÁCH CÁ NHÂN</Typography>
+            </Grid> 
           <TableContainer  component={Paper} >
                 <Table aria-label="customized table" size="medium">
                     <TableHead >
@@ -152,7 +155,7 @@ const handleDelete = (id: number) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-           
+            </Grid>
             <Paper component="div">
                 {openDialog && (
                     <DMQuyDialog 

@@ -3,6 +3,7 @@ import async from "../components/Async";
 import { IRoute } from "../types/RouteType";
 
 const Dashboard = async(() => import("../pages/dashboard/Dashboard"));
+const DanhSachDK = async(() => import("../pages/dashboard/danhSach/danhSach"));
 const About = async(() => import("../pages/About"));
 const Config = async(() => import("../pages/config"));
 const Company = async(() => import("../pages/baseInfo/company"));
@@ -36,6 +37,14 @@ export const routes: Array<IRoute> = [
         enabled: true,
         component: Dashboard,
     },
+    {
+        key: "dashboard-danhsach",
+        title: "Dashboard",
+        path: "dashboard/danhsach",
+        enabled: true,
+        component: DanhSachDK,
+    },
+   
     {
         key: "about-route",
         title: "About",

@@ -1,31 +1,32 @@
 import {
     Box,
     Checkbox,
-    createStyles,
     DialogContent,
+    FormControl,
+    FormControlLabel,
     FormHelperText,
+    FormLabel,
     Grid,
     InputBase,
-    InputLabel,
-    makeStyles,
-    NativeSelect,
+    InputLabel,   
+    NativeSelect,   
+    Radio,   
+    RadioGroup,
     TextField,
-    Theme,
 } from "@mui/material";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import React, { useEffect, useState } from "react";
-import { DialogTitle } from "../../../components/commons/dialog/dialogCommons";
-import { DanhMucQuyDTO, dataDMQuy } from "../../../models/interace";
-import { log } from "console";
-import { DanhSachCaNhanDTO } from "../../../models/danhsachcanhan";
-// import { DialogTitle } from "@material-ui/core";
+import {  DanhSachCongDanDTO, dataDSCD } from "../../models/dsCongDan";
+import { DialogTitle } from "../../components/commons/dialog/dialogCommons";
+import { DanhMucQuyDTO, dataDMQuy } from "../../models/interace";
+
 
 interface IModalProps {
     onDialogClose: () => void;
     openDialog: boolean;
-    itemEdit: DanhSachCaNhanDTO;
-    onSubmitData:  (values: DanhSachCaNhanDTO) => void;
+    itemEdit: DanhSachCongDanDTO;
+     onSubmitData:  (values:DanhSachCongDanDTO ) => void;
 }
 
 interface ErrorValidation {
@@ -33,16 +34,17 @@ interface ErrorValidation {
     code: string;
     group: string;
 }
-
-export const DMQuyDialog = (props: IModalProps) => {
+export const DKiDongQuy = (props: IModalProps) => {
     const [openDialog, setOpenDialog] = useState(false);
-    const [itemEditDTO, setItemEditDTO] = useState<DanhSachCaNhanDTO>({} as DanhSachCaNhanDTO);
-    const [errors, setErrors] = useState<ErrorValidation>({} as ErrorValidation);
-    
+    const [itemEditDTO, setItemEditDTO] = useState<DanhSachCongDanDTO>({} as DanhSachCongDanDTO);
+    const [errors, setErrors] = useState<ErrorValidation>({} as ErrorValidation); 
     useEffect(() => {
         setItemEditDTO(props.itemEdit);
         setOpenDialog(props.openDialog);
     }, [ props.openDialog,props.itemEdit]);
+
+
+    
 
     const handleChange = (e: any) => {
         const isCheckbox = e.target.type === "checkbox";
@@ -51,30 +53,36 @@ export const DMQuyDialog = (props: IModalProps) => {
           [e.target.name]: isCheckbox ? e.target.checked : e.target.value,
         }));
       };
-    
- 
-    const submitData = () => {
+
+      const handleClick = () => () => {
         props.onSubmitData(itemEditDTO)
       };
+
+  // const submitData = () => {
+    //     // setDataQuy([...dataQuy,itemEditDTO ])
+    //     props.onSubmitData(itemEditDTO)
+    //   };
       
+   
       
     return (
         <>
             <Dialog  onClose={props.onDialogClose} fullWidth maxWidth="md" aria-labelledby="customized-dialog-title"open={openDialog} >
                 <DialogTitle id="customized-dialog-title" onClose={props.onDialogClose}>
-                    {itemEditDTO.id !== null ? "Thêm mới danh sách" : "Cập nhật danh sách"}
+                  ĐĂNG KÝ ĐÓNG QUỶ
                 </DialogTitle>
                 <DialogContent dividers>
                 <Box padding={0}>
                         <Grid spacing={2} container>
                             <Grid item xs={6} className="gridItem">
-                                <InputLabel>Mã </InputLabel>
+                                <InputLabel>CCCD</InputLabel>
                                 <TextField
                                     fullWidth
+                                    disabled
                                     label={""}
                                     required
-                                    name="code"
-                                    value={itemEditDTO.code}
+                                    name="cccd"
+                                    value={itemEditDTO.cccd}
                                     onChange={handleChange}
                                     error={Boolean(errors.name)}
                                     InputProps={{
@@ -85,15 +93,16 @@ export const DMQuyDialog = (props: IModalProps) => {
                                 />
                             </Grid>
                             <Grid item xs={6} className="gridItem">
-                                 <InputLabel>Họ và tên</InputLabel>
+                                 <InputLabel>Tên công dân</InputLabel>
                                 <TextField
                                     fullWidth
+                                    disabled
                                     label={""}
                                     required
                                     name="name"
                                     value={itemEditDTO.name}
                                     onChange={handleChange}
-                                    error={Boolean(errors.name)}
+                                    error={Boolean(errors.code)}
                                     InputProps={{
                                         disableUnderline: true,
                                     }}
@@ -102,13 +111,14 @@ export const DMQuyDialog = (props: IModalProps) => {
                                 />
                             </Grid>
                             <Grid item xs={6} className="gridItem">
-                                <InputLabel>Số tiền nộp</InputLabel>
+                                <InputLabel>gmail</InputLabel>
                                 <TextField
                                     fullWidth
+                                    disabled
                                     label={""}
                                     required
-                                    name="sotien"
-                                    value={itemEditDTO.sotien}
+                                    name="gmail"
+                                    value={itemEditDTO.gmail}
                                     onChange={handleChange}
                                     error={Boolean(errors.name)}
                                     InputProps={{
@@ -118,11 +128,12 @@ export const DMQuyDialog = (props: IModalProps) => {
                                     helperText={Boolean(errors.name) && errors.name}
                                 />
                             </Grid>
-                           
-                            <Grid item xs={12} className="gridItem">
-                                <InputLabel>Số điện thoại</InputLabel>
+                            <Grid item xs={6} className="gridItem">
+                                <InputLabel>sdt</InputLabel>
                                 <TextField
                                     fullWidth
+                                    color='info'
+                                    disabled
                                     label={""}
                                     required
                                     name="sdt"
@@ -136,6 +147,63 @@ export const DMQuyDialog = (props: IModalProps) => {
                                     helperText={Boolean(errors.name) && errors.name}
                                 />
                             </Grid>
+                            <Grid item xs={6} className="gridItem">
+                            <FormControl sx={{ m: 1, width: 400 }}>
+                            <FormLabel id="demo-row-radio-buttons-group-label">Chọn quỷ</FormLabel>
+                                <NativeSelect 
+                                    id="name"
+                                    error={Boolean(errors.group)}
+                                   
+                                    onChange={handleChange}
+                                >
+                                    {dataDMQuy.map((item) => (
+                                        <option key={item.id} value={item.id}>
+                                            {item.name}
+                                        </option>
+                                    ))}
+                                </NativeSelect>
+                            </ FormControl>
+                                {Boolean(errors.group) && <FormHelperText className="-error">{errors.group}</FormHelperText>}
+                            </Grid>
+                            <Grid item xs={6}>
+                                <FormControl>
+                                <FormLabel id="demo-row-radio-buttons-group-label">Thanh Toán</FormLabel>
+                                <Box marginTop={"15px"} marginLeft={"20px"} >
+                                    <RadioGroup
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                    
+                                >
+                                    <FormControlLabel value="ví điện tử Foxpay"  control={<Radio size="small" />} label=" ví điện tử Foxpay" />
+                                    <FormControlLabel value="Ngân hàng" control={<Radio size="small" />} label="Ngân hàng" />
+                                   
+                                   
+                                </RadioGroup>
+                                </Box>
+                                
+                            </FormControl>
+                            </Grid>
+                            <Grid item xs={12} className="gridItem">
+                                <InputLabel>Địa chỉ</InputLabel>
+                                <TextField
+                                    fullWidth
+                                    label={""}
+                                    required
+                                    name="diachi"
+                                    value={itemEditDTO.diachi}
+                                    onChange={handleChange}
+                                    error={Boolean(errors.name)}
+                                    InputProps={{
+                                        disableUnderline: true,
+                                    }}
+                                    FormHelperTextProps={{ className: "-error" }}
+                                    helperText={Boolean(errors.name) && errors.name}
+                                />
+                            </Grid>
+                          
+                           
+                           
+                           
                            
                             <Grid item xs={12} className="gridItem">
                                 <Box marginTop="5px">
@@ -143,15 +211,13 @@ export const DMQuyDialog = (props: IModalProps) => {
                                         variant="contained"
                                         color="primary"
                                         disableElevation
-                                        onClick={() => {
-                                            // props.onSubmitData();
-                                             submitData();
-                                            
-                                             
-                                        }}
+                                        onClick={
+                                            handleClick()
+                                        }
                                     >
-                                        Lưu
+                                        Đăng ký
                                     </Button>
+                                   
                                     <Button
                                         variant="contained"
                                         color="secondary"
